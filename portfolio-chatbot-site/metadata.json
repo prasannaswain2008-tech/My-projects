@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Prasanna Kumar Swain Portfolio",
+  "description": "Professional portfolio for Prasanna Kumar Swain, a Specialist Technical Writer with 10+ years of experience, featuring an interactive AI documentation sandbox.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

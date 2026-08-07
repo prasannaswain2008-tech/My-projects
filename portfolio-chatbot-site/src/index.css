@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-primary: #818cf8; /* Indigo-400 */
+  --color-brand-on-primary: #ffffff; /* White */
+  --color-brand-surface: #0b0f19; /* Slate-950 variant */
+  --color-brand-surface-lowest: #020617; /* Slate-950 */
+  --color-brand-surface-low: #0f172a; /* Slate-900 */
+  --color-brand-surface-medium: #1e293b; /* Slate-800 */
+  --color-brand-surface-high: #334155; /* Slate-700 */
+  --color-brand-surface-highest: #475569; /* Slate-600 */
+  --color-brand-on-surface: #e2e8f0; /* Slate-200 */
+  --color-brand-on-surface-variant: #94a3b8; /* Slate-400 */
+  --color-brand-outline: #64748b; /* Slate-500 */
+  --color-brand-outline-variant: #1e293b; /* Slate-800 */
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-brand-surface);
+    color: var(--color-brand-on-surface);
+  }
+}
