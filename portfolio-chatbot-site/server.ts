@@ -12,6 +12,18 @@ const PORT = Number(process.env.PORT || 3000);
 type ManualChunk = { manual: string; page: number; text: string };
 const manualChunks: ManualChunk[] = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "manual_chunks.json"), "utf8"));
 const words = (value: string) => (value.toLowerCase().match(/[a-z0-9]{2,}/g) || []);
+const getResponseText = (result: any) => {
+  if (typeof result?.output_text === "string" && result.output_text.trim()) {
+    return result.output_text.trim();
+  }
+
+  return (Array.isArray(result?.output) ? result.output : [])
+    .flatMap((item: any) => Array.isArray(item?.content) ? item.content : [])
+    .filter((item: any) => item?.type === "output_text" && typeof item?.text === "string")
+    .map((item: any) => item.text.trim())
+    .filter(Boolean)
+    .join("\n");
+};
 const findEvidence = (question: string) => {
   const terms = new Set(words(question));
   return manualChunks.map(chunk => {
@@ -48,7 +60,7 @@ app.post("/api/manuals/ask", async (req, res) => {
     });
     if (!response.ok) throw new Error("The manuals assistant is temporarily unavailable.");
     const result: any = await response.json();
-    return res.json({ answer: result.output_text || "I could not generate an answer just now." });
+    return res.json({ answer: getResponseText(result) || "I could not generate an answer just now." });
   } catch (error: any) {
     console.error("Manuals Assistant Error:", error);
     return res.status(500).json({ error: "The manuals assistant is temporarily unavailable. Please try again shortly." });
