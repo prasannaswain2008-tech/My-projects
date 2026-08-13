@@ -13,6 +13,7 @@ import { WorkTimeline } from "./components/WorkTimeline";
 import { AiSandbox } from "./components/AiSandbox";
 import { ShowcaseSection } from "./components/ShowcaseSection";
 import { ManualsChatWidget } from "./components/ManualsChatWidget";
+import prasannaPortrait from "./assets/images/prasanna-portrait-hd.png";
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -292,7 +293,7 @@ export default function App() {
                 {/* Main image container */}
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-brand-outline-variant bg-brand-surface-lowest shadow-2xl">
                   <img
-                    src="/src/assets/images/prasanna_real_face_1783168769852.jpg"
+                    src={prasannaPortrait}
                     alt="Prasanna Kumar Swain Portrait"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover object-center transition-all duration-500 transform hover:scale-105 filter contrast-[1.08] brightness-[1.01] saturate-[1.04]"
